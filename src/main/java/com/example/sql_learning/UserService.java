@@ -4,6 +4,8 @@ package com.example.sql_learning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -16,5 +18,9 @@ public class UserService {
     public String addUser(User user) {
         userRepository.save(user);
         return "User added successfully";
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

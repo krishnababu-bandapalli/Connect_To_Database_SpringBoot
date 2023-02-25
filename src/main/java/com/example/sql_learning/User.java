@@ -1,5 +1,6 @@
 package com.example.sql_learning;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,19 +9,25 @@ import jakarta.persistence.Table;
 @Table(name="user_info")
 public class User {
     @Id
+    @Column(unique = true)
     private int id;
     private String name;
     private int age;
+    @Column(name ="country_name")
     private String country;
+    @Column(unique = true)
+    private String email;
+    private String mobNo;
 
     public User() {
     }
 
-    public User(int id, String name, int age, String country) {
+    public User(int id, String name, int age, String mobNo, String email) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.country=country;
+        this.mobNo = mobNo;
+        this.email = email;
     }
 
     public int getId() {
@@ -43,12 +50,20 @@ public class User {
         return age;
     }
 
-    public String getCountry() {
-        return country;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMobNo() {
+        return mobNo;
+    }
+
+    public void setMobNo(String mobNo) {
+        this.mobNo = mobNo;
     }
 
     public void setAge(int age) {
